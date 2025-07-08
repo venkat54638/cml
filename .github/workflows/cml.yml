@@ -38,6 +38,4 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          ls -l  # Debug to make sure files exist
-          cat cml_report.md
-          cml comment create cml_report.md --image scatter.png
+          cml comment create cml_report.md
