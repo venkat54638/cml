@@ -26,9 +26,11 @@ r2 = r2_score(y_test, y_pred)
 
 # Save metrics
 with open("cml_report.md", "w") as f:
-    f.write(f"# California Housing Model Report\n")
-    f.write(f"- MSE: **{mse:.4f}**\n")
-    f.write(f"- R² Score: **{r2:.4f}**\n")
+    f.write(f"# California Housing Model Report\n\n")
+    f.write(f"- **MSE**: {mse:.4f}\n")
+    f.write(f"- **R² Score**: {r2:.4f}\n")
+
+
 
 # Plot predictions vs actual
 plt.figure(figsize=(8, 6))
