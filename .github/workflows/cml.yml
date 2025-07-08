@@ -2,7 +2,7 @@ name: California Housing CML
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
   pull_request:
 
 jobs:
@@ -22,7 +22,7 @@ jobs:
         run: |
           pip install -r requirements.txt
 
-      - name: Install Node.js (for CML)
+      - name: Set up Node.js for CML
         uses: actions/setup-node@v3
         with:
           node-version: '18'
@@ -31,10 +31,10 @@ jobs:
         run: |
           npm install -g @dvcorg/cml
 
-      - name: Train model
+      - name: Run training script
         run: python train.py
 
-      - name: Create CML report
+      - name: Post CML report
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
