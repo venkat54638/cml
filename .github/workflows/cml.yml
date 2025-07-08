@@ -18,9 +18,18 @@ jobs:
         with:
           python-version: '3.10'
 
-      - name: Install dependencies
+      - name: Install Python dependencies
         run: |
           pip install -r requirements.txt
+
+      - name: Install Node.js (for CML)
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install CML CLI
+        run: |
+          npm install -g @dvcorg/cml
 
       - name: Train model
         run: python train.py
@@ -29,4 +38,6 @@ jobs:
         env:
           REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cml comment create --md cml_report.md --image scatter.png
+          ls -l  # Debug to make sure files exist
+          cat cml_report.md
+          cml comment create cml_report.md --image scatter.png
