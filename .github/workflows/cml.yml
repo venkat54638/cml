@@ -34,8 +34,4 @@ jobs:
       - name: Run training script
         run: python train.py
 
-      - name: Post CML report
-        env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          cml comment create cml_report.md
+      
